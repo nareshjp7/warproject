@@ -1,6 +1,6 @@
 node {
    stage('scm checout'){
-   git credentialsId: 'e135db2b-4595-4e3e-aaae-d2cc3b4be499', url: 'https://github.com/rajubabu77/warproject.git'
+   git credentialsId: 'e135db2b-4595-4e3e-aaae-d2cc3b4be499', url: 'https://github.com/nareshjp7/warproject.git'
 }
    stage('mvn pak'){
        def MVNHOME=tool name: 'mvn', type: 'maven'
