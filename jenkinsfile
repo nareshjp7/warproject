@@ -17,9 +17,9 @@ node {
    sh 'docker push devnj/toi:v1.0'
    }
    stage('run doc on dev env'){
-       def dockerRun='docker run -d -p 8081:8080 --name doccc devnj/toi:v1.0'
-       sshagent(['remote']) {
-         sh "ssh -o stricthostkeychecking=no ec2-user@54.174.119.160 ${dockerRun}"
+       def dockerRun='docker run -d -p 8081:8080 --name doc7 devnj/toi:v1.0'
+       sshagent(['dev-server']) {
+         sh "ssh -o stricthostkeychecking=no ec2-user@3.86.111.166 ${dockerRun}"
           
    }
        
