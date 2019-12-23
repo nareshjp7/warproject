@@ -14,10 +14,10 @@ node {
       withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPwd')]) {
           sh "docker login -u devnj -p ${dockerHubPwd}"
    }
-   sh 'docker push devnj/toi:v1.0'
+   sh 'docker push devnj/toi:v2.0'
    }
    stage('run doc on dev env'){
-       def dockerRun='docker run -d -p 8081:8087 --name doc7 devnj/toi:v1.0'
+       def dockerRun='docker run -d -p 8081:8087 --name doc8 devnj/toi:v2.0'
        sshagent(['dev-server']) {
          sh "ssh -o stricthostkeychecking=no ec2-user@3.86.111.166 ${dockerRun}"
           
