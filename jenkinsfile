@@ -18,7 +18,7 @@ node {
       withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPwd')]) {
           sh "docker login -u devnj -p ${dockerHubPwd}"
    }
-   sh 'docker push devnj/my-app1:v3.0'
+   sh 'docker push devnj/my-app1:$BUILD_ID'
    }
    stage('run doc on dev env'){
        def dockerRun='docker run -d -p 8080:8087 --name doc12 devnj/my-app1:$BUILD_ID'
