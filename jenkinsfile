@@ -9,6 +9,10 @@ node {
    }
    stage('build image'){
        sh'docker build -t devnj/my-app:v2.0 .'
+   }    
+   stage('tag image'){
+       sh'docker tag devnj/my-app:v2.0 devnj/my-app:$BUILD_ID .'    
+       
    }
    stage('push doc image'){
       withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPwd')]) {
