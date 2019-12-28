@@ -21,7 +21,7 @@ node {
    sh 'docker push devnj/my-app1:v3.0'
    }
    stage('run doc on dev env'){
-       def dockerRun='docker run -d -p 8080:8087 --name doc10 devnj/my-app1:v3.0'
+       def dockerRun='docker run -d -p 8080:8087 --name doc12 devnj/my-app1:$BUILD_ID'
        sshagent(['dev-server']) {
          sh "ssh -o stricthostkeychecking=no ec2-user@3.86.111.166 ${dockerRun}"
           
